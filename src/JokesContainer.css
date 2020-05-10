@@ -1,0 +1,7 @@
+.JokesContainer {
+    align-self: center;
+    background-color: #f6eedf;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.3), inset 0 0 10px 10px rgba(150, 150, 150, 0.1);
+    height: 90%;
+    overflow: auto;
+}

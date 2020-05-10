@@ -1,0 +1,87 @@
+.Banner {
+    align-items: center;
+    background-color: #d63447;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.3), inset 0 0 10px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-width: 300px;
+    z-index: 2;
+}
+
+.Banner h1 {
+    font-size: 2.2rem;
+    margin: 0 2rem 0 2rem;
+    color: #fff;
+    font-weight: 300;
+    letter-spacing: 0.6rem;
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+}
+
+.Banner h1 span {
+    font-weight: 700;
+    letter-spacing: 0;
+}
+
+.Banner img {
+    width: 75%;
+}
+
+.Banner img:hover {
+    -webkit-animation: bounce 1s ease-in-out infinite alternate;
+    -moz-animation: bounce 1s ease-in-out infinite alternate;
+    animation: bounce 1s ease-in-out infinite alternate;
+}
+
+.Banner button {
+    color: #333;
+    cursor: pointer;
+    background-color: #ffd31d;
+    font-size: 1.2rem;
+    padding: 15px 50px;
+    border: none;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.3), inset 0 0 10px 10px rgba(255, 255, 255, 0.1);
+}
+
+.Banner button:hover{
+    color: #fff;
+    -webkit-animation: glow 1s ease-in-out infinite alternate, pulse 1s ease-in-out infinite; 
+    -moz-animation: glow 1s ease-in-out infinite alternate, pulse 1s ease-in-out infinite;
+    animation: glow 1s ease-in-out infinite alternate, pulse 1s ease-in-out infinite;
+}
+
+@keyframes pulse {
+	0% {
+        color: #333;
+		transform: scale(0.95);
+		box-shadow: 0 0 0 0 rgba(245, 123, 81, 0.7);
+	}
+	
+	70% {
+        color: #fff;
+		transform: scale(1);
+		box-shadow: 0 0 0 10px rgba(245, 123, 81, 0);
+	}
+	
+	100% {
+        color: #333;
+		transform: scale(0.95);
+		box-shadow: 0 0 0 0 rgba(245, 123, 81, 0);
+	}
+}
+
+@keyframes bounce {
+    25%  { transform: translate(0, -10px); }
+    50%  { transform: translate(0, 0); }
+    75%  { transform: translate(0, -10px); }
+    100% { transform: translate(0, 0); }
+}
+
+@keyframes glow {
+    from {
+      box-shadow: 0 0 10px #f6eedf, 0 0 20px #f6eedf, 0 0 30px #f57b51, 0 0 40px #f57b51, 0 0 50px #f57b51, 0 0 60px #f57b51, 0 0 70px #f57b51;
+    }
+    to {
+      box-shadow: 0 0 20px #f6eedf, 0 0 30px #f57b51, 0 0 40px #f57b51, 0 0 50px #f57b51, 0 0 60px #f57b51, 0 0 70px #f57b51, 0 0 80px #f57b51;
+    }
+  }

@@ -1,0 +1,13 @@
+.JokeList {
+    display: flex;
+    height: 80%;
+    width: 80%;
+}
+
+.JokeList .Banner {
+    width: 30%;
+}
+
+.JokeList .JokesContainer {
+    width: 70%;
+}
