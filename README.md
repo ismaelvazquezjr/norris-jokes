@@ -1,5 +1,7 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+This project was created while following along with Colt Steele's React JS course on udemy where he builds a "Dad Jokes" application. Much of the code is different as is the color scheme. 
+
 ## Available Scripts
 
 In the project directory, you can run:
