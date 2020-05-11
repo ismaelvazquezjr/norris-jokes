@@ -12,6 +12,16 @@
     margin: 0 20px;
 }
 
+.Joke .fa-arrow-up:hover {
+    animation: move-up 0.7s ease-out infinite;
+    color: #8bc34a;
+}
+
+.Joke .fa-arrow-down:hover {
+    color: #d63447;
+    animation: move-down 0.7s ease-out infinite;
+}
+
 .Joke .buttons {
     align-items: center;
     display: flex;
@@ -36,4 +46,14 @@
     font-size: 1.2rem;
     width: 75%;
     margin-right: 5%;
+}
+
+@keyframes move-up {
+    0%, 50%, 100% { transform: translateY(0); }
+    25%, 75% { transform: translateY(-3px);}
+}
+
+@keyframes move-down {
+    0%, 50%, 100% { transform: translateY(0); }
+    25%, 75% { transform: translateY(3px);}
 }

@@ -15,6 +15,7 @@ class JokeList extends Component {
         super(props);
 
         this.state = {
+            loading: false,
             jokeObjects: JSON.parse(window.localStorage.getItem("jokes") || "[]")
         }
 
@@ -26,16 +27,19 @@ class JokeList extends Component {
         if (this.state.jokeObjects.length === 0) this.getNewJokes();
     }
 
-    async getNewJokes() {
-        let jokeObjects = await this.getJokeObjects().then(data => data).catch(err => {throw new Error(err)});
-        for (let i = 0; i < jokeObjects.length; i++) {
-            jokeObjects[i].votes = 0;
-        }
-        this.setState({
-            jokeObjects: jokeObjects
-        });
+    getNewJokes() {
+        this.setState({loading: true},async () => {
+            let jokeObjects = await this.getJokeObjects().then(data => data).catch(err => {throw new Error(err)});
+            for (let i = 0; i < jokeObjects.length; i++) {
+                jokeObjects[i].votes = 0;
+            }
+            this.setState({
+                loading: false,
+                jokeObjects: jokeObjects
+            });
 
-        window.localStorage.setItem("jokes", JSON.stringify(jokeObjects));
+            window.localStorage.setItem("jokes", JSON.stringify(jokeObjects));
+        });
     }
 
     // getJokeObjects - returns a joke object if the api request succeeds
@@ -69,7 +73,7 @@ class JokeList extends Component {
         return (
             <div className="JokeList">
                 <Banner getNewJokes={this.getNewJokes}/>
-                <JokesContainer jokes={this.state.jokeObjects} updateVote={this.handleVote}/>
+                <JokesContainer jokes={this.state.jokeObjects} updateVote={this.handleVote} isLoading={this.state.loading}/>
             </div>
         );
     }
