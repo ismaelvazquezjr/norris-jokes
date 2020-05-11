@@ -15,15 +15,27 @@ class JokeList extends Component {
         super(props);
 
         this.state = {
-            jokeObjects: []
+            jokeObjects: JSON.parse(window.localStorage.getItem("jokes") || "[]")
         }
+
+        this.handleVote = this.handleVote.bind(this);
+        this.getNewJokes = this.getNewJokes.bind(this);
     }
 
-    async componentDidMount() {
-        const jokeObjects = await this.getJokeObjects().then(data => data).catch(err => {throw new Error(err)});
+    componentDidMount() {
+        if (this.state.jokeObjects.length === 0) this.getNewJokes();
+    }
+
+    async getNewJokes() {
+        let jokeObjects = await this.getJokeObjects().then(data => data).catch(err => {throw new Error(err)});
+        for (let i = 0; i < jokeObjects.length; i++) {
+            jokeObjects[i].votes = 0;
+        }
         this.setState({
             jokeObjects: jokeObjects
         });
+
+        window.localStorage.setItem("jokes", JSON.stringify(jokeObjects));
     }
 
     // getJokeObjects - returns a joke object if the api request succeeds
@@ -41,14 +53,23 @@ class JokeList extends Component {
     }
 
     handleVote(id, delta) {
-
+        this.setState(st => {
+            const updatedJokes = st.jokeObjects.map(joke => 
+                joke.id === id 
+                ? {...joke, votes: joke.votes + delta} 
+                : joke);
+            window.localStorage.setItem("jokes", JSON.stringify(updatedJokes));
+            return {
+                jokeObjects: updatedJokes
+            }
+        });
     }
 
     render() {
         return (
             <div className="JokeList">
-                <Banner />
-                <JokesContainer jokes={this.state.jokeObjects} />
+                <Banner getNewJokes={this.getNewJokes}/>
+                <JokesContainer jokes={this.state.jokeObjects} updateVote={this.handleVote}/>
             </div>
         );
     }

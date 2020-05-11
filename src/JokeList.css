@@ -1,6 +1,6 @@
 .JokeList {
     display: flex;
-    height: 80%;
+    height: 80vh;
     width: 80%;
 }
 
@@ -10,4 +10,59 @@
 
 .JokeList .JokesContainer {
     width: 70%;
+}
+
+@media(max-width: 1350px) {
+    .JokeList {
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+        height: 80%;
+        padding: 5%;
+    }
+
+    .JokeList .Banner {
+        width: 70%;
+        padding: 5% 0;
+    }
+
+    .JokeList .Banner h1 {
+        margin-bottom: 5%;
+    }
+
+    .JokeList .Banner img {
+        display: none;
+    }
+
+    .JokeList .JokesContainer {
+        margin-top: 5%;
+        height: 500px;
+    }
+
+    .JokeList .JokesContainer .Joke .votes{
+        border: none;
+        border-radius: 0%;
+        box-shadow: none;
+    }
+}
+
+@media(max-width: 1000px) {
+    .JokeList {
+        padding: 5% 0 0 0 ;
+        margin: 0;
+        width: 100%;
+    }
+}
+
+@media(max-width: 600px) {
+
+    .JokeList .JokesContainer .Joke {
+        flex-direction: column;
+    }
+
+    .JokeList .JokesContainer .Joke .text {
+        padding: 0;
+        margin: 0;
+        width: 100%;
+    }
 }
